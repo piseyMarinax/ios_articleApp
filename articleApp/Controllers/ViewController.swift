@@ -8,18 +8,34 @@
 
 import UIKit
 
-class ViewController: UIViewController {
 
+class ViewController: UIViewController,ArticlePresenterDelegate {
+  
+    
+  
+    var articelPresenter: ArticlePresenter?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        self.articelPresenter = ArticlePresenter()
+        self.articelPresenter?.delegate = self
+        self.articelPresenter?.getArticles(page: 1, limit: 10)
+     
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    func responseArticle(articles: [Article]) {
+        for article in articles{
+            print(article.title);
+            print(article.description);
+            
+        }
+       
     }
+    
+    
 
+   
 
 }
 
