@@ -7,5 +7,6 @@ target 'articleApp' do
 
   # Pods for articleApp
   pod 'SwiftyJSON', '~> 4.0'
+  pod 'Kingfisher'
 
 end

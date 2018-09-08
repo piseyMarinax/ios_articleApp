@@ -21,6 +21,7 @@
 		3961518C2132405800E43EB5 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3961518B2132405800E43EB5 /* Category.swift */; };
 		3961518E2132503900E43EB5 /* ArticlePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3961518D2132503900E43EB5 /* ArticlePresenter.swift */; };
 		396151902132504C00E43EB5 /* ArticelPresenterDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3961518F2132504C00E43EB5 /* ArticelPresenterDelegate.swift */; };
+		396406D62142DE5B00BF0F0A /* ArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396406D52142DE5B00BF0F0A /* ArticleTableViewCell.swift */; };
 		DF61EC00DA474C742F4F27F2 /* Pods_articleApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10ABD26B89F7AEA1226B1A67 /* Pods_articleApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +64,7 @@
 		3961518B2132405800E43EB5 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		3961518D2132503900E43EB5 /* ArticlePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlePresenter.swift; sourceTree = "<group>"; };
 		3961518F2132504C00E43EB5 /* ArticelPresenterDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticelPresenterDelegate.swift; sourceTree = "<group>"; };
+		396406D52142DE5B00BF0F0A /* ArticleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleTableViewCell.swift; sourceTree = "<group>"; };
 		AB6EFFCF1509E98EEDA4257D /* Pods-articleApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-articleApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-articleApp/Pods-articleApp.release.xcconfig"; sourceTree = "<group>"; };
 		B288DF3A8947D0A0FA4DCB76 /* Pods-articleApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-articleApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-articleApp/Pods-articleApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -178,6 +180,7 @@
 		3961518221323C1B00E43EB5 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				396406D72142DE7000BF0F0A /* Table Cell */,
 				3961514F2132387900E43EB5 /* ViewController.swift */,
 			);
 			path = Controllers;
@@ -199,6 +202,14 @@
 				396151592132387B00E43EB5 /* LaunchScreen.storyboard */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		396406D72142DE7000BF0F0A /* Table Cell */ = {
+			isa = PBXGroup;
+			children = (
+				396406D52142DE5B00BF0F0A /* ArticleTableViewCell.swift */,
+			);
+			path = "Table Cell";
 			sourceTree = "<group>";
 		};
 		635B0E12AF1CC676B7CCE201 /* Frameworks */ = {
@@ -354,10 +365,12 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-articleApp/Pods-articleApp-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -390,6 +403,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				396406D62142DE5B00BF0F0A /* ArticleTableViewCell.swift in Sources */,
 				3961518621323FDF00E43EB5 /* ArticleService.swift in Sources */,
 				396151502132387900E43EB5 /* ViewController.swift in Sources */,
 				396151902132504C00E43EB5 /* ArticelPresenterDelegate.swift in Sources */,

@@ -9,11 +9,11 @@
 import UIKit
 
 
-class ViewController: UIViewController,ArticlePresenterDelegate {
-  
-    
+class ViewController: UIViewController,ArticlePresenterDelegate, UITableViewDelegate, UITableViewDataSource {
   
     var articelPresenter: ArticlePresenter?
+    
+    var articles = [Article]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,13 +24,33 @@ class ViewController: UIViewController,ArticlePresenterDelegate {
      
     }
     
+    @IBOutlet weak var articleTableView: UITableView!
+    
+    
     func responseArticle(articles: [Article]) {
+        
         for article in articles{
-            print(article.title);
-            print(article.description);
+            print(article.title!);
             
         }
-       
+        
+        self.articles = articles
+        DispatchQueue.main.async {
+            self.articleTableView.reloadData()
+        }
+        
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return articles.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "articleCell") as! ArticleTableViewCell
+        
+        cell.configerCell(article: articles[indexPath.row])
+    
+        return cell
     }
     
     
