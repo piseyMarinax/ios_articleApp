@@ -9,6 +9,8 @@
 import Foundation
 
 class ArticlePresenter: ArticleServiceDelegate {
+   
+    
     var delegate: ArticlePresenterDelegate?
     
     var articleService: ArticleService?
@@ -26,4 +28,20 @@ class ArticlePresenter: ArticleServiceDelegate {
     func getArticles(page: Int,limit: Int) {
         articleService?.getArticles(page: page, limit: limit)
     }
+    
+    func insertArticle(article: Article)  {
+        articleService?.insertArticle(article: article)
+    }
+    
+    func deleteArticle(id: Int) {
+        articleService?.deleteArticle(id: id)
+    }
+    
+    func responseMessage(message: String) {
+        self.delegate?.responseMessage(message: message)
+    }
+    func uploadImage(data: Data, article: Article){
+        
+    }
+    
 }

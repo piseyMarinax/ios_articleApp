@@ -25,5 +25,4 @@ class Article{
         self.category = Category(json: json["CATEGORY"])
         self.image = json["IMAGE"].string
     }
-
 }

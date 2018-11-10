@@ -9,8 +9,10 @@
 import UIKit
 
 
-class ViewController: UIViewController,ArticlePresenterDelegate, UITableViewDelegate, UITableViewDataSource {
-  
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+   
+    
     var articelPresenter: ArticlePresenter?
     
     var articles = [Article]()
@@ -20,26 +22,18 @@ class ViewController: UIViewController,ArticlePresenterDelegate, UITableViewDele
         
         self.articelPresenter = ArticlePresenter()
         self.articelPresenter?.delegate = self
-        self.articelPresenter?.getArticles(page: 1, limit: 10)
+        
      
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.articelPresenter?.getArticles(page: 1, limit: 30)
     }
     
     @IBOutlet weak var articleTableView: UITableView!
     
     
-    func responseArticle(articles: [Article]) {
-        
-        for article in articles{
-            print(article.title!);
-            
-        }
-        
-        self.articles = articles
-        DispatchQueue.main.async {
-            self.articleTableView.reloadData()
-        }
-        
-    }
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return articles.count
@@ -53,9 +47,39 @@ class ViewController: UIViewController,ArticlePresenterDelegate, UITableViewDele
         return cell
     }
     
+}
+
+extension ViewController: ArticlePresenterDelegate{
     
-
-   
-
+    func responseMessage(message: String) {
+        let alert = UIAlertController(title: message, message: nil, preferredStyle:  .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        
+        DispatchQueue.main.async {
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    func responseArticle(articles: [Article]) {
+        
+        self.articles = articles
+        DispatchQueue.main.async {
+            self.articleTableView.reloadData()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let edit = UITableViewRowAction(style: .normal, title: "Edit"){ (action,indexPath) in
+            
+        }
+        let delete = UITableViewRowAction(style: .destructive, title: "Delete"){ (action,indexPath) in
+            //Delete article code goes here
+            self.articelPresenter?.deleteArticle(id: self.articles[indexPath.row].id!)
+            self.articles.remove(at: indexPath.row)
+            self.articleTableView.deleteRows(at: [indexPath], with: .fade)
+        }
+        
+        return [edit,delete];
+    }
 }
 
